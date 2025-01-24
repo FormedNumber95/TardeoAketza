@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TardeoAketza</string>
+    <string name="palabra_a_buscar">Palabra a buscar</string>
+    <string name="url">URL</string>
+    <string name="play">PLAY</string>
+    <string name="off">OFF</string>
 </resources>
