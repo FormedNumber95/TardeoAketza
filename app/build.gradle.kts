@@ -40,8 +40,9 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
+    implementation (libs.androidx.work.runtime.ktx)
+    implementation (libs.jsoup)
+    implementation (libs.androidx.core.ktx.v160)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
