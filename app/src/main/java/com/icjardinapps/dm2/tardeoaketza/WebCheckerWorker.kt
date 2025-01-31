@@ -23,6 +23,8 @@ import java.lang.Exception
  *
  * @param appContext El contexto de la aplicación.
  * @param workerParams Parámetros adicionales proporcionados por WorkManager.
+ * @author Aketza
+ * @version 1.0
  */
 class WebCheckerWorker(appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) {
 
@@ -35,6 +37,7 @@ class WebCheckerWorker(appContext: Context, workerParams: WorkerParameters) : Wo
      * `sendNotification` para enviar una notificación.</p>
      *
      * @return Un objeto [Result] que indica si el trabajo fue exitoso o no.
+     * @author Aketza
      */
     override fun doWork(): Result {
         try {
@@ -76,6 +79,8 @@ class WebCheckerWorker(appContext: Context, workerParams: WorkerParameters) : Wo
      *
      * <p>La notificación se muestra con el título "¡Se encontró la palabra!"
      * y un mensaje que indica que la palabra fue encontrada.</p>
+     *
+     * @author Aketza
      */
     private fun sendNotification() {
         val context = applicationContext

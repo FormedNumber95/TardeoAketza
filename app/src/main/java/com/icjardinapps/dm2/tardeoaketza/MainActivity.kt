@@ -27,6 +27,8 @@ import java.util.UUID
  * por el `WebCheckerWorker`.</p>
  *
  * @see WebCheckerWorker
+ * @author Aketza
+ * @version 1.0
  */
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
      * introducir dinámicamente la URL y la palabra clave mediante campos de texto.</p>
      *
      * @param savedInstanceState Estado previamente guardado de la actividad (si lo hay).
+     * @author Aketza
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,6 +136,8 @@ class MainActivity : AppCompatActivity() {
      *
      * <p>Este metodo cancela todos los trabajos asociados con la etiqueta o el ID
      * almacenado. También finaliza la aplicación de manera controlada.</p>
+     *
+     * @author Aketza
      */
     private fun stopWork() {
         // Cancelar trabajos asociados con la etiqueta
