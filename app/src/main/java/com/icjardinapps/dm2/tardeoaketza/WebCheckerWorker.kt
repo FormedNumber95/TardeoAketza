@@ -43,7 +43,6 @@ class WebCheckerWorker(appContext: Context, workerParams: WorkerParameters) : Wo
             val semaforo = sharedPreferences.getString("semaforo", null) ?: return Result.failure()
 
             if (isStopped || semaforo.equals("R")) {
-                println("stopped")
                 return Result.failure()
 
             }
@@ -84,20 +83,21 @@ class WebCheckerWorker(appContext: Context, workerParams: WorkerParameters) : Wo
         // Crear el canal de notificación (solo necesario para API 26+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
-                "guestlist_channel",
-                "Guestlist Notification",
+                context.getString(R.string.guestlist_channel),
+                context.getString(R.string.guestlist_notification),
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
-                description = "Canal para notificaciones de palabras encontradas"
+                description =
+                    context.getString(/* resId = */ R.string.canal_para_notificaciones_de_palabras_encontradas)
             }
             val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
 
         // Crear y enviar la notificación
-        val notification: Notification = NotificationCompat.Builder(context, "guestlist_channel")
-            .setContentTitle("¡Se encontró la palabra!")
-            .setContentText("La palabra fue encontrada en la página web.")
+        val notification: Notification = NotificationCompat.Builder(context, context.getString(R.string.guestlist_channel))
+            .setContentTitle(context.getString(R.string.se_encontr_la_palabra))
+            .setContentText(context.getString(R.string.la_palabra_fue_encontrada_en_la_p_gina_web))
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()

@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity() {
 
         // Listener para el botón "Stop"
         btnStop.setOnClickListener {
-            println("Pulso boton stop")
             this.semaforo="R"
             val sharedPreferences = getSharedPreferences("WebCheckerPrefs", MODE_PRIVATE)
             sharedPreferences.edit().putString("semaforo", semaforo).apply()
@@ -108,7 +107,6 @@ class MainActivity : AppCompatActivity() {
                 val url = s.toString()
                 val sharedPreferences = getSharedPreferences("WebCheckerPrefs", MODE_PRIVATE)
                 sharedPreferences.edit().putString("url", url).apply()
-                println("URL ingresada: $url")
             }
         })
 
@@ -126,7 +124,6 @@ class MainActivity : AppCompatActivity() {
                 val word = s.toString()
                 val sharedPreferences = getSharedPreferences("WebCheckerPrefs", MODE_PRIVATE)
                 sharedPreferences.edit().putString("word", word).apply()
-                println("Palabra ingresada: $word")
             }
         })
     }
@@ -146,12 +143,10 @@ class MainActivity : AppCompatActivity() {
         //WorkManager.getInstance(this).cancelAllWork()
         WorkManager.getInstance(this).pruneWork()
         WorkManager.getInstance(this).getWorkInfosByTag(workTag).get().forEach { workInfo ->
-            println("Trabajo ID: ${workInfo.id}, Estado: ${workInfo.state}")
 
             // Cancelar solo si el trabajo está encolado o en ejecución
             if (workInfo.state == WorkInfo.State.ENQUEUED || workInfo.state == WorkInfo.State.RUNNING) {
                 WorkManager.getInstance(this).cancelWorkById(workInfo.id)
-                println("Trabajo con ID ${workInfo.id} cancelado")
             }
         }
 

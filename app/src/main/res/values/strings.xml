@@ -4,4 +4,9 @@
     <string name="url">URL</string>
     <string name="play">PLAY</string>
     <string name="off">OFF</string>
+    <string name="canal_para_notificaciones_de_palabras_encontradas">Canal para notificaciones de palabras encontradas</string>
+    <string name="guestlist_notification">Guestlist Notification</string>
+    <string name="guestlist_channel">guestlist_channel</string>
+    <string name="se_encontr_la_palabra">¡Se encontró la palabra!</string>
+    <string name="la_palabra_fue_encontrada_en_la_p_gina_web">La palabra fue encontrada en la página web.</string>
 </resources>
