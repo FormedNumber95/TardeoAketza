@@ -9,4 +9,5 @@
     <string name="guestlist_channel">guestlist_channel</string>
     <string name="se_encontr_la_palabra">¡Se encontró la palabra!</string>
     <string name="la_palabra_fue_encontrada_en_la_p_gina_web">La palabra fue encontrada en la página web.</string>
+    <string name="la_url_y_la_palabra_a_buscar_son_necesarias_para_realizar_la_busqueda">La url y la palabra a buscar son necesarias para realizar la busqueda</string>
 </resources>

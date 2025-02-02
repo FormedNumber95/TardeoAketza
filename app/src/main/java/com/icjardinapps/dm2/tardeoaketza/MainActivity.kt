@@ -13,6 +13,7 @@ import android.Manifest
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.Toast
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkInfo
 import java.util.UUID
@@ -70,21 +71,26 @@ class MainActivity : AppCompatActivity() {
 
         // Listener para el botón "Play"
         btnPlay.setOnClickListener {
-            this.semaforo="V"
-            val sharedPreferences = getSharedPreferences("WebCheckerPrefs", MODE_PRIVATE)
-            sharedPreferences.edit().putString("semaforo", semaforo).apply()
+            if(urlField.text.trim().isNotEmpty()&&wordField.text.trim().isNotEmpty()) {
+                this.semaforo = "V"
+                val sharedPreferences = getSharedPreferences("WebCheckerPrefs", MODE_PRIVATE)
+                sharedPreferences.edit().putString("semaforo", semaforo).apply()
 
-            WorkManager.getInstance(this).cancelAllWorkByTag(this.workTag)
-            val workRequest = PeriodicWorkRequestBuilder<WebCheckerWorker>(
-                15, // Intervalo mínimo de 15 minutos
-                TimeUnit.MINUTES
-            ).addTag(this.workTag).build()
+                WorkManager.getInstance(this).cancelAllWorkByTag(this.workTag)
+                val workRequest = PeriodicWorkRequestBuilder<WebCheckerWorker>(
+                    15, // Intervalo mínimo de 15 minutos
+                    TimeUnit.MINUTES
+                ).addTag(this.workTag).build()
 
-            // Encolar el trabajo periódico
-            WorkManager.getInstance(this).enqueue(workRequest)
+                // Encolar el trabajo periódico
+                WorkManager.getInstance(this).enqueue(workRequest)
 
-            // Guardar el ID del trabajo en ejecución
-            this.workId = workRequest.id
+                // Guardar el ID del trabajo en ejecución
+                this.workId = workRequest.id
+            }else{
+                Toast.makeText(this,
+                    getString(R.string.la_url_y_la_palabra_a_buscar_son_necesarias_para_realizar_la_busqueda),Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Listener para el botón "Stop"
