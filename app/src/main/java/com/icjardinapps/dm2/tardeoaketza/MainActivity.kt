@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.work.WorkManager
 import java.util.concurrent.TimeUnit
 import android.Manifest
+import android.media.MediaPlayer
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
@@ -69,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         val btnPlay = findViewById<Button>(R.id.btnPlay)
         val btnStop = findViewById<Button>(R.id.btnOff)
 
+        val incorrectSound = MediaPlayer.create(this, R.raw.sonido_error)
+
         // Listener para el botón "Play"
         btnPlay.setOnClickListener {
             if(urlField.text.trim().isNotEmpty()&&wordField.text.trim().isNotEmpty()) {
@@ -88,8 +91,10 @@ class MainActivity : AppCompatActivity() {
                 // Guardar el ID del trabajo en ejecución
                 this.workId = workRequest.id
             }else{
+                playIncorrectSound(incorrectSound)
                 Toast.makeText(this,
-                    getString(R.string.la_url_y_la_palabra_a_buscar_son_necesarias_para_realizar_la_busqueda),Toast.LENGTH_SHORT).show()
+                    getString(R.string.la_url_y_la_palabra_a_buscar_son_necesarias_para_realizar_la_busqueda)
+                    ,Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -160,8 +165,14 @@ class MainActivity : AppCompatActivity() {
                 WorkManager.getInstance(this).cancelWorkById(workInfo.id)
             }
         }
+    }
 
-
-
+    /**
+     * Metodo que saca un sonido
+     *
+     * @author Aketza
+     */
+    private fun playIncorrectSound(mediaPlayer: MediaPlayer) {
+        mediaPlayer.start()
     }
 }
