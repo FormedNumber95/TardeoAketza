@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - TardeoAketza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        main {
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <section>
+        <h1>Manual de Usuario - TardeoAketza</h1>
+        <p>La aplicación <strong>"TardeoAketza"</strong> permite configurar una URL y una palabra clave para realizar búsquedas periódicas en una página web. La tarea de búsqueda se ejecuta en segundo plano y se puede iniciar o detener en cualquier momento a través de los botones.</p>
+    </section>
+
+    <section>
+        <h2>Requisitos</h2>
+        <ul>
+            <li><strong>Permisos necesarios:</strong> Permiso para notificaciones (para Android 13 o superior).</li>
+            <li><strong>Conexión a Internet:</strong> Se requiere conexión a Internet para realizar las búsquedas en la web.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Pantalla Principal</h2>
+        <p>La pantalla principal de la aplicación contiene los siguientes elementos:</p>
+        <ul>
+            <li><strong>Campo de texto para la URL:</strong> Introduzca la URL de la página web donde desea realizar la búsqueda.</li>
+            <li><strong>Campo de texto para la palabra clave:</strong> Introduzca la palabra clave que desea buscar en la URL indicada.</li>
+            <li><strong>Botón "Play":</strong> Inicia la tarea periódica para buscar la palabra clave en la URL configurada. La tarea se ejecutará cada 15 minutos en segundo plano.</li>
+            <li><strong>Botón "Stop":</strong> Detiene la tarea de búsqueda periódica.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Cómo Usar la Aplicación</h2>
+        <ol>
+            <li><strong>Configurar la URL y la palabra clave:</strong> Abra la aplicación y vea los campos de texto para la URL y la palabra clave. Ingrese la URL de la página web y la palabra clave que está buscando.</li>
+            <li><strong>Iniciar la búsqueda:</strong> Haga clic en el botón "Play" para comenzar la tarea de búsqueda periódica. Asegúrese de que ambos campos estén correctamente configurados. La tarea se ejecutará cada 15 minutos en segundo plano.</li>
+            <li><strong>Detener la búsqueda:</strong> Haga clic en el botón "Stop" para cancelar la tarea de búsqueda. Esto detendrá cualquier tarea programada y finalizará cualquier trabajo en ejecución.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Permisos</h2>
+        <p>La aplicación solicitará el permiso de <strong>notificaciones</strong> en dispositivos con Android 13 o superior. Este permiso es necesario para enviar alertas de notificación si la búsqueda se completa correctamente.</p>
+    </section>
+</main>
+
+<footer>
+    <p>Aketza González</p>
+</footer>
+
+</body>
+</html>
