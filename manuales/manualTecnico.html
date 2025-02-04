@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Técnico - TardeoAketza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        main {
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <section>
+        <h1>Manual Técnico - TardeoAketza</h1>
+        <p>Este manual técnico describe los aspectos clave de la arquitectura, componentes y funcionamiento de la aplicación **TardeoAketza**.</p>
+    </section>
+
+    <section>
+        <h2>Descripción General</h2>
+        <p>La aplicación **TardeoAketza** permite configurar una URL y una palabra clave para realizar búsquedas periódicas en una página web. Utiliza **WorkManager** de Android para gestionar tareas en segundo plano que se repiten periódicamente. La aplicación cuenta con una interfaz que permite iniciar y detener las tareas de búsqueda.</p>
+    </section>
+
+    <section>
+        <h2>Arquitectura de la Aplicación</h2>
+        <p>La aplicación sigue el patrón de diseño **Modelo-Vista-Controlador (MVC)**:</p>
+        <ul>
+            <li><strong>Modelo:</strong> Utiliza <code>SharedPreferences</code> para almacenar la URL, la palabra clave y el estado de la aplicación (en ejecución o detenida).</li>
+            <li><strong>Vista:</strong> La vista está compuesta por la actividad principal que permite al usuario introducir la URL y la palabra clave, así como controlar el inicio y la detención de las tareas en segundo plano.</li>
+            <li><strong>Controlador:</strong> El controlador gestiona la lógica de la aplicación, incluida la programación de las tareas periódicas usando <code>WorkManager</code> y la validación de los datos ingresados por el usuario.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Componentes Principales</h2>
+        <p>Los componentes clave de la aplicación son:</p>
+        <ul>
+            <li><strong>MainActivity:</strong> Es la actividad principal que gestiona la entrada de la URL y la palabra clave, así como el control de las tareas de fondo (inicio y parada).</li>
+            <li><strong>WebCheckerWorker:</strong> Es un trabajador que se encarga de realizar la búsqueda de la palabra clave en la página web especificada. Utiliza <code>WorkManager</code> para gestionar la ejecución en segundo plano.</li>
+            <li><strong>SharedPreferences:</strong> Permite almacenar la configuración del usuario (URL, palabra clave y estado de la aplicación) para que pueda ser persistente entre sesiones.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Flujo de la Aplicación</h2>
+        <p>El flujo de trabajo de la aplicación es el siguiente:</p>
+        <ol>
+            <li>El usuario introduce la URL y la palabra clave en los campos correspondientes.</li>
+            <li>Al hacer clic en el botón "Play", la aplicación valida que los campos no estén vacíos y programa un trabajo periódico que se ejecuta cada 15 minutos utilizando <code>WorkManager</code>.</li>
+            <li>El trabajador <code>WebCheckerWorker</code> realiza la búsqueda periódica en la URL proporcionada. Si encuentra la palabra clave, puede generar una notificación.</li>
+            <li>Al hacer clic en el botón "Stop", el trabajo en segundo plano se cancela.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Detalles del Worker (WebCheckerWorker)</h2>
+        <p>El <code>WebCheckerWorker</code> es responsable de ejecutar la tarea periódica. Realiza las siguientes acciones:</p>
+        <ul>
+            <li>Obtiene la URL y la palabra clave desde <code>SharedPreferences</code>.</li>
+            <li>Realiza una búsqueda en la página web para verificar si contiene la palabra clave.</li>
+            <li>Si la palabra clave es encontrada, se puede generar una notificación para alertar al usuario.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Permisos Requeridos</h2>
+        <p>La aplicación solicita permisos para realizar ciertas acciones, tales como el envío de notificaciones. En dispositivos con Android 13 o superior, se solicita el permiso <code>POST_NOTIFICATIONS</code> para mostrar notificaciones.</p>
+    </section>
+
+    <section>
+        <h2>Consideraciones Técnicas</h2>
+        <p>Algunas consideraciones clave sobre el funcionamiento técnico de la aplicación:</p>
+        <ul>
+            <li><strong>Uso de WorkManager:</strong> La aplicación utiliza <code>WorkManager</code> para gestionar tareas periódicas. Esta herramienta garantiza que las tareas se ejecuten incluso si la aplicación no está activa o si el dispositivo se reinicia.</li>
+            <li><strong>Uso de SharedPreferences:</strong> Se emplea para almacenar la URL, la palabra clave y el estado de la aplicación, asegurando que estos datos se mantengan entre sesiones del usuario.</li>
+            <li><strong>Sonidos:</strong> Se reproduce un sonido de error en caso de que los campos de URL o palabra clave estén vacíos cuando el usuario intenta iniciar la búsqueda.</li>
+        </ul>
+    </section>
+
+</main>
+
+<footer>
+    <p>Aketza González</p>
+</footer>
+
+</body>
+</html>
